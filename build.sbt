@@ -6,6 +6,11 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.1.0" % Test
 )
 
+enablePlugins(SiteScaladocPlugin)
+
+siteDirectory := file(".")
+SiteScaladoc / siteSubdirName := "docs/scaladocs"
+
 lazy val root = (project in file("."))
   .settings(
     name := "robot"
