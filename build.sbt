@@ -9,7 +9,7 @@ libraryDependencies ++= Seq(
 enablePlugins(SiteScaladocPlugin)
 
 siteDirectory := file(".")
-SiteScaladoc / siteSubdirName := "docs/scaladocs"
+SiteScaladoc / siteSubdirName := "docs"
 
 lazy val root = (project in file("."))
   .settings(

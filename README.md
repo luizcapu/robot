@@ -1,6 +1,6 @@
 ## Documentation
 
-[Scaladocs](./docs/scaladocs/org/lcarvalho/robot/index.html)
+[Scaladocs](https://luizcapu.github.io/robot/org/lcarvalho/robot/index.html)
 
 ## Running the Application
 
