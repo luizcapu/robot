@@ -27,7 +27,7 @@ class RobotControllerSpec extends RobotControllerSpecHelper {
   describe("when initializing") {
     it("should output the welcome message and execute the initializeEvent") {
       controller.initialize()
-      validateHelpOutput(Some("Hello! Robot coming online."))
+      validateHelpOutput(List("Hello! Robot coming online."))
     }
   }
 
@@ -105,10 +105,9 @@ class RobotControllerSpec extends RobotControllerSpecHelper {
 
   describe("when receiving Quit event") {
     it("should switch isRunning state and log nothing to the output") {
-      val isRunningBefore = controller.isRunning
       val stateBefore = controller.currentState
 
-      isRunningBefore shouldEqual true
+      controller.isRunning shouldEqual true
 
       ingest(Quit)
 
@@ -180,9 +179,8 @@ trait RobotControllerSpecHelper extends AnyFunSpec with Matchers with BeforeAndA
     SinkMock.isEmpty shouldEqual true
   }
 
-  protected def validateHelpOutput(fooOpt: Option[String] = None): Unit = {
-    val foo = fooOpt.map(List(_)).getOrElse(Nil)
-    val expectations: List[String] = foo ++ List("Command the robot with:") ++ Events.values.toList.map(_.description)
+  protected def validateHelpOutput(previousOutput: List[String] = Nil): Unit = {
+    val expectations: List[String] = previousOutput ++ List("Command the robot with:") ++ Events.values.toList.map(_.description)
     validateOutput(expectations: _*)
   }
 }
