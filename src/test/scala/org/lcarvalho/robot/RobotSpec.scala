@@ -3,7 +3,6 @@ package org.lcarvalho.robot
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
 import org.lcarvalho.robot.Directions._
-import org.lcarvalho.robot.Events._
 
 import scala.util.Random
 
@@ -17,23 +16,14 @@ class RobotSpec extends AnyFunSpec with Matchers {
 
   describe("when receiving a valid turn event") {
     it("should turn and return an updated object") {
-      Robot(North).turn(Left) shouldEqual Robot(West)
-      Robot(North).turn(Right) shouldEqual Robot(East)
-      Robot(South).turn(Left) shouldEqual Robot(East)
-      Robot(South).turn(Right) shouldEqual Robot(West)
-      Robot(West).turn(Left) shouldEqual Robot(South)
-      Robot(West).turn(Right) shouldEqual Robot(North)
-      Robot(East).turn(Left) shouldEqual Robot(North)
-      Robot(East).turn(Right) shouldEqual Robot(South)
-    }
-  }
-
-  describe("when receiving an invalid turn event") {
-    it("should not turn or raise exception and return itself") {
-      val robot = Robot()
-      Events.values.filterNot(e => e == Left || e == Right).foreach { event =>
-        robot.turn(event) shouldEqual robot
-      }
+      Robot(North).turnLeft() shouldEqual Robot(West)
+      Robot(North).turnRight() shouldEqual Robot(East)
+      Robot(South).turnLeft() shouldEqual Robot(East)
+      Robot(South).turnRight() shouldEqual Robot(West)
+      Robot(West).turnLeft() shouldEqual Robot(South)
+      Robot(West).turnRight() shouldEqual Robot(North)
+      Robot(East).turnLeft() shouldEqual Robot(North)
+      Robot(East).turnRight() shouldEqual Robot(South)
     }
   }
 
