@@ -1,3 +1,7 @@
+## Documentation
+
+[Scaladocs](./docs/scaladocs/org/lcarvalho/robot/index.html)
+
 ## Running the Application
 
 ```bash
