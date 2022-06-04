@@ -69,8 +69,9 @@ class RobotController(
 
   private def parse(event: Event): Unit = {
     event match {
-      case Move         => assignRobotState(robotState.move())
-      case Left | Right => assignRobotState(robotState.turn(event))
+      case Move  => assignRobotState(robotState.move())
+      case Left  => assignRobotState(robotState.turnLeft())
+      case Right => assignRobotState(robotState.turnRight())
       case Help =>
         sink.out("Command the robot with:")
         Events.values.foreach(event => sink.out(event.description))

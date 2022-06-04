@@ -99,20 +99,18 @@ package object robot {
   case class Robot(direction: Direction = North, x: Int = 0, y: Int = 0) {
 
     /**
-      * Return a new instance of a [[Robot]] turned to the Left or to the Right.
+      * Return a new instance of a [[Robot]] turned to the Left.
       *
-      * Return itself if event isn't neither [[Events.Left]] nor [[Events.Right]].
-      *
-      * @param event
-      * @return a new [[Robot]] instance or itself
+      * @return a new [[Robot]] instance
       */
-    def turn(event: Event): Robot = {
-      event match {
-        case Left  => copy(direction = direction.previous)
-        case Right => copy(direction = direction.next)
-        case _     => this
-      }
-    }
+    def turnLeft(): Robot = copy(direction = direction.previous)
+
+    /**
+      * Return a new instance of a [[Robot]] turned to the Right.
+      *
+      * @return a new [[Robot]] instance
+      */
+    def turnRight(): Robot = copy(direction = direction.next)
 
     /**
       * Move the [[Robot]] forward on the correct axis, depending on the [[Directions.Direction]] it is currently facing to.
